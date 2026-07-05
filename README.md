@@ -12,6 +12,8 @@ We’re interested to see how you work and not so much in the specific framework
 
 You can implement the solution as anything that makes sense to you (don’t get obsessed with implementing a CLI, a simple app, or an HTTP API). We prefer simple code with good tests over a larger or more polished application with unclear design.
 
+We want to see hoy YOU code and understand how YOU think and solve problems, not an LLM.
+
 For guidance, the solution should take around 2–3 hours to implement.
 
 ## Instructions
