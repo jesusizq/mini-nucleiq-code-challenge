@@ -1,0 +1,30 @@
+{
+  "$schema": "https://repomix.com/schemas/latest/schema.json",
+  "security": {
+    "enableSecurityCheck": true
+  },
+  "output": {
+    "style": "xml",
+    "filePath": "repomix-output.xml",
+    "removeComments": true,
+    "showLineNumbers": true,
+    "topFilesLength": 20,
+    "fileSummary": true,
+    "directoryStructure": true,
+    "compress": true
+  },
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      "repomix-output.xml",
+      "tests/**",
+      "**/test_*.py",
+      ".claude/**",
+      ".vexp/**",
+      "PLAN.md",
+      "TASK.md",
+      "poetry.lock"
+    ]
+  }
+}

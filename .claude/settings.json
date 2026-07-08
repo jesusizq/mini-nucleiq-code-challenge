@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "deny": ["Bash(rm -rf *)"]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(jq -r '.tool_input.file_path // empty'); if echo \"$FILE\" | grep -qE '\\.py$'; then poetry run black \"$FILE\" 2>/dev/null || black \"$FILE\" 2>/dev/null; fi"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "notify-send 'Claude Code' 'mini-nucleiq needs your attention' 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}
