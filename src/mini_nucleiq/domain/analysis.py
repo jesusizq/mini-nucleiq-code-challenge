@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass
 from enum import Enum
 
@@ -24,3 +25,23 @@ class AlgorithmResult:
     positive_cells: int
     positivity: float
     result: Verdict
+
+
+@dataclass(frozen=True, slots=True)
+class AnalysisResult:
+    """Outcome of analyzing a sample with zero or more algorithms."""
+
+    sample_name: str
+    algorithms: tuple[AlgorithmResult, ...]
+    result: Verdict
+
+
+def aggregate(sample_name: str, results: Sequence[AlgorithmResult]) -> AnalysisResult:
+    """Combine per-algorithm results into a final verdict.
+
+    The sample is POSITIVE if strictly more than half of the algorithms are positive
+    (``positives * 2 > n``); ties and the empty case are NEGATIVE.
+    """
+    positives = sum(1 for result in results if result.result is Verdict.POSITIVE)
+    verdict = Verdict.POSITIVE if positives * 2 > len(results) else Verdict.NEGATIVE
+    return AnalysisResult(sample_name=sample_name, algorithms=tuple(results), result=verdict)

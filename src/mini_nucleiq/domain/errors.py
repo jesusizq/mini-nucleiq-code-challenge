@@ -9,3 +9,7 @@ class MiniNucleiqError(Exception):
 
 class InvalidSampleDataError(MiniNucleiqError):
     """A sample's cell data is missing, malformed, or not a sequence of 0/1 values."""
+
+
+class UnknownAlgorithmError(MiniNucleiqError):
+    """A requested algorithm name is not registered."""
