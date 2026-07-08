@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "mini-nucleiq"
+version = "0.1.0"
+description = "Analyze breast-tissue samples for simplified marker patterns via pluggable algorithms."
+authors = ["Jesús Izquierdo <susej_ic@hotmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "mini_nucleiq", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3"
+black = "^24.10"
+ruff = "^0.7"
+mypy = "^1.13"
+pre-commit = "^4.0"
+
+[build-system]
+requires = ["poetry-core>=1.5.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+# pycodestyle, pyflakes, isort, pyupgrade, bugbear, simplify, comprehensions
+select = ["E", "F", "I", "UP", "B", "SIM", "C4"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+files = ["src", "tests"]
+pretty = true
+
+[[tool.mypy.overrides]]
+# Tests may omit return-type annotations; keep the domain code fully strict instead.
+module = "tests.*"
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
