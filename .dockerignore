@@ -1,0 +1,22 @@
+# Keep the build context small; the image only needs pyproject, lock, README and src.
+.git
+.github
+.claude
+.venv
+**/__pycache__
+*.pyc
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.vexp
+tests
+samples
+scripts
+.env
+.env.example
+.pre-commit-config.yaml
+PLAN.md
+TASK.md
+Dockerfile
+.dockerignore
+Makefile
