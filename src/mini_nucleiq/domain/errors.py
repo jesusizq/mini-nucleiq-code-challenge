@@ -17,3 +17,7 @@ class UnknownAlgorithmError(MiniNucleiqError):
 
 class SampleNotFoundError(MiniNucleiqError):
     """No sample exists under the requested name (the source has no such sample)."""
+
+
+class SamplesApiError(MiniNucleiqError):
+    """The samples source was unreachable or returned an unexpected/failed response."""
