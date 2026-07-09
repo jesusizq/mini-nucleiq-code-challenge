@@ -13,3 +13,7 @@ class InvalidSampleDataError(MiniNucleiqError):
 
 class UnknownAlgorithmError(MiniNucleiqError):
     """A requested algorithm name is not registered."""
+
+
+class SampleNotFoundError(MiniNucleiqError):
+    """No sample exists under the requested name (the source has no such sample)."""
