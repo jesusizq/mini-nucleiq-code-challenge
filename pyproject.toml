@@ -59,3 +59,7 @@ addopts = "-m 'not live'"
 markers = [
     "live: hits the real Samples API over the network (deselected by default; run with -m live)",
 ]
+filterwarnings = [
+    # Upstream Starlette TestClient deprecation (StarletteDeprecationWarning); not our code.
+    "ignore:Using `httpx` with `starlette.testclient` is deprecated",
+]
